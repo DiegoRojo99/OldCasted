@@ -18,8 +18,24 @@ function addActor() {
     actorBoxes.appendChild(li);
 
 }
+function winner(){
+    console.log("Winner");
+}
 
-addActor(actor);
+let film="The Hunger Games";
+let guess="The Hunger Games";
+
+function checkGuess(){
+    let guess=document.getElementById("movie-search").value;
+    if(guess===film){
+        winner();
+    }else{
+        addActor();
+    }
+
+}
+
+addActor();
 
 const actorButton=document.getElementById('actor-button');
-actorButton.addEventListener("click",addActor, false);
+actorButton.addEventListener("click",checkGuess, false);
