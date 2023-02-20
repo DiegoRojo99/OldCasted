@@ -25,7 +25,7 @@ function winner(){
     alert("WINNER");
 }
 
-const filmToGuess=movieDatabase.movie1;
+const filmToGuess=movieDatabase.movie3;
 function getFilm(){
 }
 
