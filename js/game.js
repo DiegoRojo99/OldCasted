@@ -4,6 +4,21 @@ const actorBoxes= document.getElementById('actor-list');
 let actor={};
 let actors=[];
 let numberActors=0;
+let filmToGuess='';
+
+function getOptions(){
+    
+    var movieOptions= document.getElementById('movies');
+
+    for(var key in movieDatabase) {
+        var movieTitle=movieDatabase[key].title;
+        var option = document.createElement('option');
+        movieTitle = movieTitle.replace('"', '');
+        option.value=movieTitle;
+        movieOptions.appendChild(option);
+     }
+     
+}
 
 function addActor() {
     let name=actor.name;
@@ -25,9 +40,13 @@ function winner(){
     alert("WINNER");
 }
 
-const filmToGuess=movieDatabase.movie3;
-function getFilm(){
+
+function pickRandomFilm(){
+    var obj_keys = Object.keys(movieDatabase);
+    var ran_key = obj_keys[Math.floor(Math.random() *obj_keys.length)];
+    filmToGuess = movieDatabase[ran_key];
 }
+
 
 function getActor(){
     actors=filmToGuess.actors;
@@ -39,7 +58,8 @@ function getActor(){
 }
 
 function startGame(){
-    getFilm();
+    getOptions();
+    pickRandomFilm();
     getActor();
     addActor();
 }

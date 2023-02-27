@@ -11,15 +11,15 @@
                 <ul id="actor-list">
                 </ul>
             </div>
-            <input id="movie-search" list="movie-options" type="search"/>
-            <button id="actor-button">Guess Movie</button>
+            <div id="movie-guess">
+                <input list="movies" name="movie-search" id="movie-search" type="search"/>
+                <datalist id="movies">
+                </datalist>
+                <button id="actor-button">Guess Movie</button>
+                
+            </div>
         </div>
     </body>
     <script src="js/movieDatabase.js"></script>
     <script src="js/game.js"></script>
-    <datalist id="movie-options">
-        <option value="The Hunger Games">
-        <option value="Back To The Future">
-        <option value="Inception">
-    </datalist>
 </html>
