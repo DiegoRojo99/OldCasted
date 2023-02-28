@@ -29,7 +29,8 @@ const movieDatabase = {
         title:"Back To The Future", 
         actors:[
             {name:"Emmet Brown", photo:"../img/"}
-        ]
+        ],
+        spanishTitle:"Regreso Al Futuro"
     },
     movie3:{
         title:"Inception", 
@@ -40,7 +41,8 @@ const movieDatabase = {
             actorsDatabase.ElliotPage,
             actorsDatabase.LeoDiCaprio,
             actorsDatabase.MichaelCaine
-        ]
+        ],
+        spanishTitle:"Origen"
     },
     movie4:{
         title:"The Dark Knight",
@@ -50,7 +52,8 @@ const movieDatabase = {
             actorsDatabase.HeathLedger,
             actorsDatabase.ChristianBale,
             actorsDatabase.GaryOldman
-        ]    
+        ],
+        spanishTitle:"El Caballero Oscuro"  
     },
     
 };

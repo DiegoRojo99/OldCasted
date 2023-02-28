@@ -1,4 +1,5 @@
 
+var language="es";
 const actorBoxes= document.getElementById('actor-list');
 
 let actor={};
@@ -7,16 +8,30 @@ let numberActors=0;
 let filmToGuess='';
 
 function getOptions(){
-    
-    var movieOptions= document.getElementById('movies');
 
-    for(var key in movieDatabase) {
-        var movieTitle=movieDatabase[key].title;
-        var option = document.createElement('option');
-        movieTitle = movieTitle.replace('"', '');
-        option.value=movieTitle;
-        movieOptions.appendChild(option);
-     }
+    if(language==="en"){
+        var movieOptions= document.getElementById('movies');
+
+        for(var key in movieDatabase) {
+            var movieTitle=movieDatabase[key].title;
+            var option = document.createElement('option');
+            movieTitle = movieTitle.replace('"', '');
+            option.value=movieTitle;
+            movieOptions.appendChild(option);
+         }
+    }else if(language==="es"){
+        var movieOptions= document.getElementById('movies');
+
+        for(var key in movieDatabase) {
+            var movieTitle=movieDatabase[key].spanishTitle;
+            var option = document.createElement('option');
+            movieTitle = movieTitle.replace('"', '');
+            option.value=movieTitle;
+            movieOptions.appendChild(option);
+         }
+    }
+    
+    
      
 }
 
@@ -67,15 +82,42 @@ startGame();
 
 
 function checkGuess(){
-    let guess=document.getElementById("movie-search").value;
-    if(guess===filmToGuess.title){
-        winner();
-    }else{
-        getActor();
-        addActor();
+    if(language==="es"){
+            let guess=document.getElementById("movie-search").value;
+        if(guess===filmToGuess.spanishTitle){
+            winner();
+        }else{
+            getActor();
+            addActor();
+        }
+    }else if(language==="en"){
+        let guess=document.getElementById("movie-search").value;
+        if(guess===filmToGuess.title){
+            winner();
+        }else{
+            getActor();
+            addActor();
+        }
     }
 }
 
 
 const actorButton=document.getElementById('actor-button');
 actorButton.addEventListener("click",checkGuess, false);
+const flagButton=document.getElementById('actual-flag');
+flagButton.addEventListener("click",clickFlag, false);
+
+function clickFlag(){
+    changeLanguage();
+    getOptions();
+}
+
+function changeLanguage(){
+    if(language==="es"){
+        flagButton.src="img/Flags/English.png";
+        language="en";
+    }else if(language==="en"){
+        flagButton.src="img/Flags/Spanish.png";
+        language="es";
+    }
+}

@@ -38,3 +38,9 @@ html{
     height: 2rem;
     width: 16rem;
 }
+#actual-flag{
+    position: absolute;
+    top: 4%;
+    left: 88%;
+    width: 5rem;
+}
