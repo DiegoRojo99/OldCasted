@@ -83,7 +83,7 @@ startGame();
 
 function checkGuess(){
     if(language==="es"){
-            let guess=document.getElementById("movie-search").value;
+        let guess=document.getElementById("movie-search").value;
         if(guess===filmToGuess.spanishTitle){
             winner();
         }else{
@@ -120,4 +120,10 @@ function changeLanguage(){
         flagButton.src="img/Flags/Spanish.png";
         language="es";
     }
+    clearOptions();
+}
+
+function clearOptions(){
+    var movieOptions= document.getElementById('movies');
+    movieOptions.innerHTML='';
 }
