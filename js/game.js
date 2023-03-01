@@ -99,6 +99,7 @@ function checkGuess(){
             addActor();
         }
     }
+    clearGuess();
 }
 
 
@@ -126,4 +127,11 @@ function changeLanguage(){
 function clearOptions(){
     var movieOptions= document.getElementById('movies');
     movieOptions.innerHTML='';
+}
+
+function clearGuess(){
+    
+    let searchBar=document.getElementById("movie-search");
+    searchBar.value='';
+
 }
