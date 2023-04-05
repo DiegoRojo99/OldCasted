@@ -28,21 +28,18 @@ function getCast(movieId) {
           name: actor.name,
           photo: `https://image.tmdb.org/t/p/w500${actor.profile_path}`
         }));
-        console.log("CAST: "+cast);
-        showActors(cast);
+        loadActors(cast);
+        showActors();
       });
 }
 
 function loadActors(cast){
-    console.log("Actors: ");
     actors=cast;
-    console.log(actors);
 }
   
-function showActors(cast){
+function showActors(){
 
-    console.log(cast);
-    let actor=cast[numberActors];
+    let actor=actors[numberActors];
     let name=actor.name;
     let photo=actor.photo;
     
@@ -60,4 +57,6 @@ function showActors(cast){
 }
 
 getRandomMovie();
-showActors();
+
+let actorButton = document.getElementById("actor-button");
+actorButton.addEventListener('click',showActors);
