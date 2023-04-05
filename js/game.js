@@ -39,6 +39,7 @@ function addActor() {
     let name=actor.name;
     let photo=actor.photo;
     
+const actorBoxes= document.getElementById('actor-list');
     const li = document.createElement("li");
     const img = document.createElement("img");
     img.src=photo;
