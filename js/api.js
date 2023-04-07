@@ -3,6 +3,7 @@ const baseUrl = 'https://api.themoviedb.org/3';
 let actors = [], numberActors=0;
 let movieIds=[];
 let movieTitle="";
+let alternateTitles=[];
 
 // Get a random movie from the discover endpoint
 function getRandomMovie() {
@@ -34,7 +35,23 @@ function getCast(movieId) {
         }));
         loadActors(cast);
         showActors();
+        getAlternateTitles(movieId);
       });
+}
+
+function getAlternateTitles(movieId){
+  
+  const endpoint = `${baseUrl}/movie/${movieId}/alternative_titles`;
+  const queryParams = `api_key=${apiKey}`;
+  const url = `${endpoint}?${queryParams}`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.titles);
+      data.titles.map(title => {alternateTitles.push(title.title.toLowerCase())});
+      alternateTitles.push(movieTitle.toLowerCase());
+      console.log(alternateTitles);
+    });
 }
 
 function loadActors(cast){
@@ -65,7 +82,7 @@ function checkGuess(){
   const guessInput = document.getElementById('movie-search'); 
   const userGuess = guessInput.value;
   // Compare the user's guess to the movie title
-  if (userGuess.toLowerCase() === movieTitle.toLowerCase()) {
+  if (alternateTitles.includes(userGuess.toLowerCase())) {
     // The guess is correct
     window.alert('Congratulations, you guessed the movie!');
   } else {
