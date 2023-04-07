@@ -83,17 +83,24 @@ function checkGuess(){
   const userGuess = guessInput.value;
   // Compare the user's guess to the movie title
   if (alternateTitles.includes(userGuess.toLowerCase())) {
-    // The guess is correct
-    window.alert('Congratulations, you guessed the movie!');
+    handleGuess(true);
+  } else if(alternateTitles.some(title => userGuess.toLowerCase().includes(title.toLowerCase()))){
+    handleGuess(true);
   } else {
-    // The guess is incorrect
-    console.log('Sorry, that is not the correct movie.');
-    showActors();
+    handleGuess(false);    
   }
 
   // Clear the input field
   guessInput.value = '';
 
+}
+
+function handleGuess(correct){
+  if(correct){
+    window.alert('Congratulations, you guessed the movie!');
+  }else{
+    console.log('Sorry, that is not the correct movie.');
+    showActors();}
 }
 
 getRandomMovie();
